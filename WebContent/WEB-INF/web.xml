@@ -29,4 +29,23 @@
   </error-page>
   -->
 
+  <!-- 部署 DispatcherServlet -->
+  <servlet>
+      <servlet-name>springmvc</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      
+      <!-- 非預設 springmvc-servlet.xml 名稱, 要在此設定 -->
+      <init-param>
+          <param-name>contextConfigLocation</param-name>
+          <param-value>/WEB-INF/applicationContext.xml</param-value>
+      </init-param>
+      
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>springmvc</servlet-name>
+      <url-pattern>/mvc/*</url-pattern>
+  </servlet-mapping>
+
 </web-app>
