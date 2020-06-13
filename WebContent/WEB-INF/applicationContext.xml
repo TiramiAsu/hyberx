@@ -21,24 +21,7 @@
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<!-- 設定 common.properties -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		p:location="/WEB-INF/resources/common.properties" />
-
-	<!-- 設定連接池 c3p0 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${db.driverClassName}" />
-		<property name="jdbcUrl" value="${db.url}" />
-		<property name="user" value="${db.username}" />
-		<property name="password" value="${db.password}" />
-		<property name="initialPoolSize" value="${pool.initialSize}" />
-	</bean>
-	
-	<!-- JDBC -->
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
+    <import resource="./dataSource.xml"/>
     
     <bean id="internalResourceViewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -47,5 +30,8 @@
     </bean>
 
     <context:component-scan base-package="tw.com.hyberx.controller"/>
+    <context:component-scan base-package="tw.com.hyberx.service.impl" />
+    <context:component-scan base-package="tw.com.hyberx.model.dao.impl" />
+    <context:component-scan base-package="tw.com.hyberx.utils" />
 
 </beans>
