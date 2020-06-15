@@ -1,6 +1,6 @@
 package tw.com.hyberx.model.entity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class Accounts {
 	private Long id;
@@ -9,13 +9,13 @@ public class Accounts {
 	private Members m_id;
 	private int status;
 	private int error_times;
-	private Timestamp time_build;
-	private Timestamp time_modify;
+	private Date time_build;
+	private Date time_modify;
 	public Accounts() {
 		super();
 	}
-	public Accounts(String name, String password, Members m_id, int status, int error_times, Timestamp time_build,
-			Timestamp time_modify) {
+	public Accounts(String name, String password, Members m_id, int status, int error_times, Date time_build,
+			Date time_modify) {
 		super();
 		this.name = name;
 		this.password = password;
@@ -61,16 +61,16 @@ public class Accounts {
 	public void setError_times(int error_times) {
 		this.error_times = error_times;
 	}
-	public Timestamp getTime_build() {
+	public Date getTime_build() {
 		return time_build;
 	}
-	public void setTime_build(Timestamp time_build) {
+	public void setTime_build(Date time_build) {
 		this.time_build = time_build;
 	}
-	public Timestamp getTime_modify() {
+	public Date getTime_modify() {
 		return time_modify;
 	}
-	public void setTime_modify(Timestamp time_modify) {
+	public void setTime_modify(Date time_modify) {
 		this.time_modify = time_modify;
 	}
 	@Override
