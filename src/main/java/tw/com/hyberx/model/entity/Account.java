@@ -31,14 +31,16 @@ public class Account implements Serializable {
 	private String password;
 
 	@ManyToOne
-	@JoinColumn(name = "m_id", nullable = false)
+	@JoinColumn(name = "m_id",
+	referencedColumnName = "id",
+	nullable = false)
 	private Member m_id;
 
 	@Column(name = "status", nullable = false)
-	private int status;
+	private Integer status;
 
 	@Column(name = "error_times", nullable = false)
-	private int error_times;
+	private Integer error_times;
 
 	@Column(name = "time_build", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -50,7 +52,7 @@ public class Account implements Serializable {
 	
 	public Account() {}
 
-	public Account(String name, String password, Member m_id, int status, int error_times, Date timeBuild,
+	public Account(String name, String password, Member m_id, Integer status, Integer error_times, Date timeBuild,
 			Date timeModify) {
 		this.name = name;
 		this.password = password;
@@ -93,19 +95,19 @@ public class Account implements Serializable {
 		this.m_id = m_id;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
-	public int getError_times() {
+	public Integer getError_times() {
 		return error_times;
 	}
 
-	public void setError_times(int error_times) {
+	public void setError_times(Integer error_times) {
 		this.error_times = error_times;
 	}
 

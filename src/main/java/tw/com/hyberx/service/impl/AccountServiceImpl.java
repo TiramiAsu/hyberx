@@ -7,62 +7,62 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import tw.com.hyberx.model.dao.MemberDAO;
-import tw.com.hyberx.model.entity.Member;
-import tw.com.hyberx.service.MemberService;
+import tw.com.hyberx.model.dao.AccountDAO;
+import tw.com.hyberx.model.entity.Account;
+import tw.com.hyberx.service.AccountService;
 
-public class MemberServiceImpl implements MemberService{
+public class AccountServiceImpl implements AccountService{
 
 	@Autowired
-	private MemberDAO memberDAO;
+	private AccountDAO accountDAO;
 	
 	@Override
 	@Transactional
-	public boolean create(Member bean) {
+	public boolean create(Account bean) {
 		bean.setTimeBuild(new Date());
         bean.setTimeModify(new Date());
-        return memberDAO.save(bean);
+        return accountDAO.save(bean);
 	}
 
 	@Override
-	public List<Member> query() {
-		List<Member> memberList=null;
+	public List<Account> query() {
+		List<Account> accountList=null;
 		
 		try {
-			memberList=memberDAO.findAll()
+			accountList=accountDAO.findAll()
 					.stream()
 					.sorted((o1,o2)->o2.getId().compareTo
 							(o1.getId()))
 					.collect(Collectors.toList());
-			if (memberList==null) {
-				throw new Exception(">>>Member Query Failed<<<");
+			if (accountList==null) {
+				throw new Exception(">>> Account Query Failed <<<");
 			}
 		} catch (Exception e) {
-			memberList=null;
+			accountList=null;
 			e.printStackTrace();
 		}
-		return memberList;
+		return accountList;
 	}
 
 	@Override
 	@Transactional
-	public Member find(Long id) {
+	public Account find(Long id) {
 		// TODO Auto-generated method stub
-		return memberDAO.find(id);
+		return accountDAO.find(id);
 	}
 
 	@Override
 	@Transactional
-	public boolean update(Member bean) {
+	public boolean update(Account bean) {
 		// TODO Auto-generated method stub
-		return memberDAO.save(bean);
+		return accountDAO.save(bean);
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(Long id) {
 		// TODO Auto-generated method stub
-		return memberDAO.remove(memberDAO.find(id));
+		return accountDAO.remove(accountDAO.find(id));
 	}
-	
+
 }
