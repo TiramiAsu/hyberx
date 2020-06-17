@@ -32,7 +32,7 @@ public class Account implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "m_id",
-	referencedColumnName = "id",
+//	referencedColumnName = "id",
 	nullable = false)
 	private Member m_id;
 
@@ -40,7 +40,7 @@ public class Account implements Serializable {
 	private Integer status;
 
 	@Column(name = "error_times", nullable = false)
-	private Integer error_times;
+	private Integer errorTimes;
 
 	@Column(name = "time_build", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -52,13 +52,13 @@ public class Account implements Serializable {
 	
 	public Account() {}
 
-	public Account(String name, String password, Member m_id, Integer status, Integer error_times, Date timeBuild,
+	public Account(String name, String password, Member m_id, Integer status, Integer errorTimes, Date timeBuild,
 			Date timeModify) {
 		this.name = name;
 		this.password = password;
 		this.m_id = m_id;
 		this.status = status;
-		this.error_times = error_times;
+		this.errorTimes = errorTimes;
 		this.timeBuild = timeBuild;
 		this.timeModify = timeModify;
 	}
@@ -103,12 +103,12 @@ public class Account implements Serializable {
 		this.status = status;
 	}
 
-	public Integer getError_times() {
-		return error_times;
+	public Integer getErrorTimes() {
+		return errorTimes;
 	}
 
-	public void setError_times(Integer error_times) {
-		this.error_times = error_times;
+	public void setErrorTimes(Integer errorTimes) {
+		this.errorTimes = errorTimes;
 	}
 
 	public Date getTimeBuild() {
@@ -130,7 +130,7 @@ public class Account implements Serializable {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", name=" + name + ", password=" + password + ", m_id=" + m_id + ", status="
-				+ status + ", error_times=" + error_times + ", timeBuild=" + timeBuild + ", timeModify=" + timeModify
+				+ status + ", errorTimes=" + errorTimes + ", timeBuild=" + timeBuild + ", timeModify=" + timeModify
 				+ "]";
 	}
 

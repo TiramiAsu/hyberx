@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tw.com.hyberx.model.dao.AccountDAO;
 import tw.com.hyberx.model.entity.Account;
 import tw.com.hyberx.service.AccountService;
 
+@Service
 public class AccountServiceImpl implements AccountService{
 
 	@Autowired
@@ -25,6 +27,7 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
+	@Transactional
 	public List<Account> query() {
 		List<Account> accountList=null;
 		
@@ -64,5 +67,4 @@ public class AccountServiceImpl implements AccountService{
 		// TODO Auto-generated method stub
 		return accountDAO.remove(accountDAO.find(id));
 	}
-
 }
