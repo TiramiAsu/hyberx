@@ -1,5 +1,17 @@
 package tw.com.hyberx.model.entity;
 
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
  * 專案名稱： hyberx
  * 
@@ -8,25 +20,35 @@ package tw.com.hyberx.model.entity;
  * Author： ChenYungYuan phone： (886)0971-667-299 E-mail： artemis3109@gmail.com
  * 
  */
+@Entity
+@Table(name = "orders")
+public class Order implements Serializable {
 
-public class Order {
-
+	private static final long serialVersionUID = -8594710176376450721L;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "name", length = 255, nullable = false)
 	private String name;
+	@Column(name = "price", nullable = false)
 	private Integer price;
+	@Column(name = "remark", nullable = true)
 	private String remark;
-	private String time_build;
-	private String time_modify;
+	@Column(name = "time_build", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date time_build;
+	@Column(name = "time_modify", nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date time_modify;
 
 	public Order() {
 	}
 
-	public Order(String name, Integer price, String remark, String time_build, String time_modify) {
+	public Order(String name, Integer price, String remark) {
 		this.name = name;
 		this.price = price;
 		this.remark = remark;
-		this.time_build = time_build;
-		this.time_modify = time_modify;
 	}
 
 	public Long getId() {
@@ -61,19 +83,19 @@ public class Order {
 		this.remark = remark;
 	}
 
-	public String getTime_build() {
+	public Date getTime_build() {
 		return time_build;
 	}
 
-	public void setTime_build(String time_build) {
-		this.time_build = time_build;
+	public void setTime_build(Date date) {
+		this.time_build = date;
 	}
 
-	public String getTime_modify() {
+	public Date getTime_modify() {
 		return time_modify;
 	}
 
-	public void setTime_modify(String time_modify) {
+	public void setTime_modify(Date time_modify) {
 		this.time_modify = time_modify;
 	}
 
