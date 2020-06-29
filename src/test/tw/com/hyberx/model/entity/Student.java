@@ -12,22 +12,17 @@ package tw.com.hyberx.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 /**
- * [學生]
+ * [Student]
  * <p>
  * [ 新增 table ]
 <pre>
@@ -67,11 +62,12 @@ public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "basicinfo_id")
-    @JsonIgnoreProperties(value = {"student"})
-    private BasicInfo basicInfo;
+    @Column(name = "name", length = 255, nullable = false)
+    private String name;
 
+    @Column(name = "age", nullable = false)
+    private Integer age;
+    
     @Column(name = "time_build", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeBuild;
@@ -79,11 +75,12 @@ public class Student implements Serializable {
     @Column(name = "time_modify", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeModify;
-    
+
     public Student() {}
 
-    public Student(BasicInfo basicInfo) {
-        this.basicInfo = basicInfo;
+    public Student(String name, Integer age) {
+        this.name = name;
+        this.age = age;
     }
 
     public Long getId() {
@@ -94,12 +91,20 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    public BasicInfo getBasicInfo() {
-        return basicInfo;
+    public String getName() {
+        return name;
     }
 
-    public void setBasicInfo(BasicInfo basicInfo) {
-        this.basicInfo = basicInfo;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Date getTimeBuild() {
@@ -121,7 +126,8 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Student [id=" + id +
-                ", basicInfo=" + basicInfo.getName() +
+                ", name=" + name +
+                ", age=" + age +
                 ", timeBuild=" + timeBuild +
                 ", timeModify=" + timeModify +
                 "]";

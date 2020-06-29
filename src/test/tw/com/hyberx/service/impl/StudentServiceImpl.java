@@ -86,12 +86,4 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentList;
     }
-//    public void name() {
-//		search(new Search().setDistinct(true)); 
-//		//would work. Only the root entity is returned for each result.
-//		search(new Search().setDistinct(true).addField("firstName");
-//		//would work. Only the single "firstName" value is returned for each result.
-//		search(new Search().setDistinct(true).addField("firstName").addField("lastName"));
-//		//would NOT work. Two fields are returned for each result.
-//	}
 }
