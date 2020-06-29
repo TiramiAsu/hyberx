@@ -18,7 +18,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,50 +26,32 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * [學生]
+ * [基本資料]
  * <p>
- * [ 新增 table ]
-<pre>
-CREATE TABLE public.student
-(    
-    id bigserial NOT NULL,
-    PRIMARY KEY (id),
-    name character varying(255),
-    age int NOT NULL,
-    time_build timestamp without time zone NOT NULL,
-    time_modify timestamp without time zone NOT NULL
-)
-WITH (
-    OIDS = FALSE
-);
-
-ALTER TABLE public.student
-OWNER to postgres
-</pre>
- * [ 新增 Data ]
-<pre>
-INSERT INTO public.student(id, name, age, time_build, time_modify) VALUES
-(default, 'peter', 24, current_timestamp, current_timestamp),
-(default, 'sandy', 22, current_timestamp, current_timestamp);
-</pre>
+ * 
  * @author  Asu
- * @since   2020-06-06 01:25
+ * @since   2020-06-18 00:00
  * @version 
  */
 @Entity
-@Table(name = "student")
-public class Student implements Serializable {
+@Table(name = "basic_info")
+public class BasicInfo implements Serializable {
 
-    private static final long serialVersionUID = -5608241289036967005L;
+    private static final long serialVersionUID = 6848014154586376321L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "basicinfo_id")
-    @JsonIgnoreProperties(value = {"student"})
-    private BasicInfo basicInfo;
+    @Column(name = "name", length = 255, nullable = false)
+    private String name;
+
+    @Column(name = "age", nullable = false)
+    private Integer age;
+
+    @OneToOne(mappedBy = "basicInfo", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnoreProperties(value = {"basicInfo"})
+    private Student student;
 
     @Column(name = "time_build", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -79,11 +60,12 @@ public class Student implements Serializable {
     @Column(name = "time_modify", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeModify;
-    
-    public Student() {}
 
-    public Student(BasicInfo basicInfo) {
-        this.basicInfo = basicInfo;
+    public BasicInfo() {}
+
+    public BasicInfo(String name, Integer age) {
+        this.name = name;
+        this.age = age;
     }
 
     public Long getId() {
@@ -94,12 +76,28 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    public BasicInfo getBasicInfo() {
-        return basicInfo;
+    public String getName() {
+        return name;
     }
 
-    public void setBasicInfo(BasicInfo basicInfo) {
-        this.basicInfo = basicInfo;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Date getTimeBuild() {
@@ -120,8 +118,10 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "Student [id=" + id +
-                ", basicInfo=" + basicInfo.getName() +
+        return "BasicInfo [id=" + id +
+                ", name=" + name +
+                ", age=" + age +
+                ", student=" + student.getId() +
                 ", timeBuild=" + timeBuild +
                 ", timeModify=" + timeModify +
                 "]";

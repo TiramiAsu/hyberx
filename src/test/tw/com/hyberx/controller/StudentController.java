@@ -9,6 +9,12 @@
  */
 package tw.com.hyberx.controller;
 
+import static tw.com.hyberx.utils.enums.InfoAPI._ADD;
+import static tw.com.hyberx.utils.enums.InfoAPI._CANCEL;
+import static tw.com.hyberx.utils.enums.InfoAPI._FIND;
+import static tw.com.hyberx.utils.enums.InfoAPI._MODIFY;
+import static tw.com.hyberx.utils.enums.InfoAPI._REMOVE;
+
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +26,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import tw.com.hyberx.controller.vo.StudentVo;
+import tw.com.hyberx.model.entity.BasicInfo;
 import tw.com.hyberx.model.entity.Student;
+import tw.com.hyberx.service.BasicInfoService;
 import tw.com.hyberx.service.StudentService;
+import tw.com.hyberx.utils.ControllerUtil;
 import tw.com.hyberx.utils.SpringUtils;
 
 /**
@@ -30,17 +40,23 @@ import tw.com.hyberx.utils.SpringUtils;
  * 
  * @author  Asu
  * @since   2020-06-06 01:23
- * @version 
+ * @version 2020-06-26 23:32 [Asu] 串接 Basic Info
  */
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-    
+
+    public static final String _NAME = "student";
+
     @Autowired
     public StudentService studentService;
-    
+
+    @Autowired
+    public BasicInfoService basicInfoService;
+
     public void initService() {
         studentService = (studentService == null) ? SpringUtils.getBean(StudentService.class) : studentService;
+        basicInfoService = (basicInfoService == null) ? SpringUtils.getBean(BasicInfoService.class) : basicInfoService;
     }
 
     /* list 假資料
@@ -56,7 +72,7 @@ public class StudentController {
     }
     */
 
-    @GetMapping("/input") // URL request 進來
+    @GetMapping("/search") // URL request 進來
     public String input(Model model) { // model 要傳給 JSP from
         
         /* list 假資料
@@ -72,14 +88,17 @@ public class StudentController {
         // initial Service
         initService();
         
-        model.addAttribute("student", new Student()); // 屬性名稱為spring form 的 modelAttribute
+        model.addAttribute("studentVo", new StudentVo()); // 屬性名稱為spring form 的 modelAttribute
         model.addAttribute("students", studentService.query());
-        model.addAttribute("action", "add");
+
+        // 加入 API
+//        model.addAttribute("action", "add");
+        ControllerUtil.setAPI(model, _NAME, _ADD, _CANCEL, _FIND, _REMOVE);
         return "test/student";
     }
 
     @PostMapping("/add") // Form request 進來
-    public String add(@ModelAttribute Student student) {
+    public String add(@ModelAttribute StudentVo studentVo) {
         
         /* list 假資料
         Long id = 1L;
@@ -96,13 +115,14 @@ public class StudentController {
         // initial Service
         initService();
         
-        studentService.create(student);
-        return "redirect:./input";
+        basicInfoService.create(studentVo.getBasicInfo());
+        studentService.create(studentVo.getStudent());
+        return "redirect:./search";
     }
 
     @GetMapping("/find/{id}")
     public String find(@PathVariable Long id, Model model) {
-        
+
         /* list 假資料
         Student student = students.stream().filter(s -> s.getId() == id).findFirst().get();
         
@@ -116,14 +136,17 @@ public class StudentController {
         // initial Service
         initService();
         
-        model.addAttribute("student", studentService.find(id));
+        model.addAttribute("studentVo", new StudentVo(studentService.find(id)));
         model.addAttribute("students", studentService.query());
-        model.addAttribute("action", "update");
+
+        // 加入 API
+//        model.addAttribute("action", "update");
+        ControllerUtil.setAPI(model, _NAME, _MODIFY, _CANCEL, _FIND, _REMOVE);
         return "test/student";
     }
 
-    @PostMapping("/update")
-    public String update(@ModelAttribute Student student) {
+    @PostMapping("/modify")
+    public String update(@ModelAttribute StudentVo studentVo) {
         
         /* list 假資料
         Student stu = students.stream().filter(s -> s.getId() == student.getId()).findFirst().get();
@@ -136,17 +159,21 @@ public class StudentController {
         // initial Service
         initService();
         
-        Student oriStudent = studentService.find(student.getId());
-        oriStudent.setName(oriStudent.getName().equals(student.getName()) ? student.getName() : oriStudent.getName());
-        oriStudent.setAge(oriStudent.getAge().equals(student.getAge()) ? student.getAge() : oriStudent.getAge());
-        oriStudent.setTimeBuild(oriStudent.getTimeBuild());
-        oriStudent.setTimeModify(new Date());
+        Student oriStudent = studentService.find(studentVo.getStudent().getId());
+        BasicInfo oriBasicInfo = oriStudent.getBasicInfo();
+        if (!oriStudent.equals(null)) {
+            oriBasicInfo.setName(oriBasicInfo.getName().equals(oriBasicInfo.getName()) ? studentVo.getBasicInfo().getName() : oriBasicInfo.getName());
+            oriBasicInfo.setAge(oriBasicInfo.getAge().equals(oriBasicInfo.getAge()) ? studentVo.getBasicInfo().getAge() : oriBasicInfo.getAge());
+            oriBasicInfo.setTimeModify(new Date());
+            oriStudent.setTimeModify(new Date());
+        }
+        oriStudent.setBasicInfo(oriBasicInfo);
         
         studentService.update(oriStudent);
-        return "redirect:./input";
+        return "redirect:./search";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/remove/{id}")
     public String delete(@PathVariable("id") Long id) {
         
         /* list 假資料
@@ -165,6 +192,6 @@ public class StudentController {
         } else {
             studentService.delete(id);
         }
-        return "redirect:../input";
+        return "redirect:../search";
     }
 }

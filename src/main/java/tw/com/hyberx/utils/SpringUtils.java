@@ -16,8 +16,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+<<<<<<< HEAD
 import tw.com.hyberx.model.entity.Account;
 import tw.com.hyberx.model.entity.Member;
+=======
+import tw.com.hyberx.model.entity.BasicInfo;
+>>>>>>> 5ae6d0bebca89f10a28c0ca4b33649bd428ef84a
 import tw.com.hyberx.model.entity.Student;
 import tw.com.hyberx.service.AccountService;
 import tw.com.hyberx.service.MemberService;
@@ -61,7 +65,7 @@ public class SpringUtils {
 			System.out.println(">>> null <<<");
 		} else {
 		    List<Student> list = studentService.query();
-		    list.add(new Student("PP", 25));
+		    list.add(new Student(new BasicInfo("Asia", 22)));
 		    list.stream().forEach(System.out::println);
 			System.out.println(">>> Success <<<");
 		}
