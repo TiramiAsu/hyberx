@@ -15,12 +15,20 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
-	<import resource="dataSource.xml"/>
-	
+	<import resource="classpath:dataSource.xml"/>
+    
+    <bean id="internalResourceViewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <context:component-scan base-package="tw.com.hyberx.controller"/>
 	<context:component-scan base-package="tw.com.hyberx.model.dao.impl" />
 	<context:component-scan base-package="tw.com.hyberx.service.impl" />
 	<context:component-scan base-package="tw.com.hyberx.utils" />
 	
 	<!--<bean id="memberService" class="com.onaccountx.mvc.service.impl.MemberServiceImpl" />-->
+	
 	
 </beans>
