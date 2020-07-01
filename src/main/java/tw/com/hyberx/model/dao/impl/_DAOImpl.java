@@ -45,7 +45,7 @@ public class _DAOImpl<T> extends GenericDAOImpl<T, Long> implements _DAO<T>, Gen
 	@Override
 	public SearchResult<Object> query(String sort, boolean asc, Map<String, Object> conditions, int page, int count)
 			throws Exception {
-		
+
 		Search search = SearchUtils.buildSearchCondition(new Search(entity), conditions);
 
 		if (sort != null)
@@ -60,7 +60,7 @@ public class _DAOImpl<T> extends GenericDAOImpl<T, Long> implements _DAO<T>, Gen
 
 	@Override
 	public SearchResult<Object> query(String sort, boolean asc, Map<String, Object> conditions) throws Exception {
-		
+
 		Search search = SearchUtils.buildSearchCondition(new Search(entity), conditions);
 
 		if (sort != null) {
