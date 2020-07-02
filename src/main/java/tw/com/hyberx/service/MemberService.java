@@ -6,4 +6,5 @@ import tw.com.hyberx.model.entity.Member;
 public interface MemberService
 extends GenericService<Member>{
 	
+	
 }

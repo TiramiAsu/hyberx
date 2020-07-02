@@ -67,4 +67,5 @@ public class AccountServiceImpl implements AccountService{
 		// TODO Auto-generated method stub
 		return accountDAO.remove(accountDAO.find(id));
 	}
+	
 }

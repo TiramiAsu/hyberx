@@ -6,4 +6,5 @@ import tw.com.hyberx.model.entity.Account;
 public interface AccountService 
 extends GenericService<Account>{
 
+	
 }

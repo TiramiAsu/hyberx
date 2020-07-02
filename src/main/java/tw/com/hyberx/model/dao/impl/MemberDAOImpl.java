@@ -10,4 +10,5 @@ public class MemberDAOImpl
 extends _DAOImpl<Member>
 implements MemberDAO{
 	
+	
 }

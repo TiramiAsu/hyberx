@@ -133,5 +133,4 @@ public class Account implements Serializable {
 				+ status + ", errorTimes=" + errorTimes + ", timeBuild=" + timeBuild + ", timeModify=" + timeModify
 				+ "]";
 	}
-
 }

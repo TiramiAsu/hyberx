@@ -16,4 +16,5 @@ public class MainController {
 		model.addAttribute("account",new Account());
 		return "main/login";
 	}
+	
 }

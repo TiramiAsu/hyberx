@@ -10,4 +10,5 @@ public class AccountDAOImpl
 extends _DAOImpl<Account>
 implements AccountDAO{
 	
+	
 }

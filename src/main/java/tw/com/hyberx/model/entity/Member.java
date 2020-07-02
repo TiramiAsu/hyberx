@@ -116,4 +116,5 @@ public class Member implements Serializable{
 		return "Member [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + ", email=" + email
 				+ ", timeBuild=" + timeBuild + ", timeModify=" + timeModify + "]";
 	}
+	
 }
