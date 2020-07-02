@@ -64,5 +64,29 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDAO.remove(memberDAO.find(id));
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	@Transactional
+	public List<Member> query() {
+		List<Member> memberList=null;
+		
+		try {
+			memberList=memberDAO.findAll()
+					.stream()
+					.sorted((o1,o2)->o2.getId().compareTo
+							(o1.getId()))
+					.collect(Collectors.toList());
+			if (memberList==null) {
+				throw new Exception(">>> Member Query Failed <<<");
+			}
+		} catch (Exception e) {
+			memberList=null;
+			e.printStackTrace();
+		}
+		return memberList;
+	}
+>>>>>>> origin/cbk
 	
 }

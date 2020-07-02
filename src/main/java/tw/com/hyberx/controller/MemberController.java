@@ -84,4 +84,5 @@ public class MemberController {
 		}
 		return "redirect:../input";
 	}
+	
 }
