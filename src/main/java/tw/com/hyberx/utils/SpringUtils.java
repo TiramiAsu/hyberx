@@ -32,7 +32,8 @@ public class SpringUtils {
 	private static ApplicationContext context;
 
 	static {
-		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		context = new FileSystemXmlApplicationContext("applicationContext.xml");
+		context = new ClassPathXmlApplicationContext("spring.cfg.xml");
 	}
 
 	public SpringUtils() {}
