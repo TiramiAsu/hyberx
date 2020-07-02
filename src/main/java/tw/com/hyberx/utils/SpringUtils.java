@@ -9,7 +9,6 @@
  */
 package tw.com.hyberx.utils;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -17,10 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import tw.com.hyberx.model.entity.BasicInfo;
-
 import tw.com.hyberx.model.entity.Student;
-import tw.com.hyberx.service.AccountService;
-import tw.com.hyberx.service.MemberService;
 import tw.com.hyberx.service.StudentService;
 
 /**
@@ -61,6 +57,7 @@ public class SpringUtils {
 			System.out.println(">>> null <<<");
 		} else {
 		    List<Student> list = studentService.query();
+		    list.add(new Student(new BasicInfo("Asia", 22)));
 		    list.stream().forEach(System.out::println);
 			System.out.println(">>> Success <<<");
 		}
