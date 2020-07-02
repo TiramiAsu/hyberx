@@ -61,7 +61,6 @@ public class SpringUtils {
 			System.out.println(">>> null <<<");
 		} else {
 		    List<Student> list = studentService.query();
-		    list.add(new Student(new BasicInfo("Asia", 22)));
 		    list.stream().forEach(System.out::println);
 			System.out.println(">>> Success <<<");
 		}
