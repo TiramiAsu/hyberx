@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import tw.com.hyberx.model.entity.BasicInfo;
 import tw.com.hyberx.model.entity.Student;
 import tw.com.hyberx.service.StudentService;
 
