@@ -21,9 +21,13 @@
 		</fieldset>
 	</form:form>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	
 >>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
+=======
+	
+>>>>>>> b87f62f10379ca20b4e3648c2958712169782fff
 	<p />
 	<table class="table">
 		<thead class="thead-light">
