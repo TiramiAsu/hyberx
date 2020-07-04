@@ -1,7 +1,10 @@
 package tw.com.hyberx.controller;
 
 import java.util.Date;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< HEAD
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import tw.com.hyberx.model.entity.Account;
 import tw.com.hyberx.model.entity.Member;
 import tw.com.hyberx.service.AccountService;
 import tw.com.hyberx.service.MemberService;
+=======
+import tw.com.hyberx.model.entity.Account;
+import tw.com.hyberx.service.AccountService;
+>>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 import tw.com.hyberx.utils.SpringUtils;
 
 @Controller
@@ -27,9 +35,12 @@ public class AccountController {
 	@Autowired
 	public AccountService accountService;
 	
+<<<<<<< HEAD
 	@Autowired
 	public MemberService memberService;
 	
+=======
+>>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 	public void initService() {
 		accountService=(accountService==null)
 				?SpringUtils.getBean(AccountService.class)
@@ -46,6 +57,7 @@ public class AccountController {
 	}
 	
 	@GetMapping("/register")
+<<<<<<< HEAD
 	public String accountRegister(@ModelAttribute Account account,Model model) {
 		initService();
 		
@@ -75,6 +87,19 @@ public class AccountController {
 		
 		model.addAttribute("account",account ); // 屬性名稱為spring form 的 modelAttribute
         model.addAttribute("accounts", accountService.query());
+=======
+	public String accountRegister(@ModelAttribute Account account) {
+		
+		return "main/features/register";
+	}
+	
+	@GetMapping("/input")
+	public String input(Model model) {
+		initService();
+		
+		model.addAttribute("account", new Account()); // 屬性名稱為spring form 的 modelAttribute
+        model.addAttribute("students", accountService.query());
+>>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
         model.addAttribute("action", "add");
         return "main/account";
 	}

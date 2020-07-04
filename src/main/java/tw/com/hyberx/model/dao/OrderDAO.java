@@ -15,4 +15,8 @@ import tw.com.hyberx.model.entity.Order;
 
 public interface OrderDAO extends _DAO<Order>, GenericDAO<Order, Long> {
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 }

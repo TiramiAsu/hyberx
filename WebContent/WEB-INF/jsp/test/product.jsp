@@ -3,54 +3,54 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>SpringMVC - from</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
-<body style="padding: 5% 10%">
-	<form:form modelAttribute="order" method="post"
-		action="/hyberx/mvc/order/${action}">
+<body style="padding: 5% 20%">
+	<form:form modelAttribute="product" method="post"
+		action="/hyberx/mvc/product/${action}">
 		<fieldset>
-			<legend>產 品 訂 單</legend>
+			<legend>Student From</legend>
 			<form:input path="id" placeholder="default" readonly="true" class="form-control" /><br>
-			<form:input path="name" placeholder="產品名稱" class="form-control" /><br>
-			<form:input path="price" placeholder="價錢" class="form-control" /><br>
-			<form:input path="remark" placeholder="附註" class="form-control" /><br>
+			<form:input path="code" placeholder="Code" class="form-control" /><br>
+			<form:input path="company" placeholder="Company" class="form-control" /><br>
+			<form:input path="name" placeholder="Name" class="form-control" /><br>
+			<form:input path="cost" placeholder="Cost" class="form-control" /><br>
+			<form:input path="type" placeholder="Type" class="form-control" /><br>
+			<form:input path="area" placeholder="Area" class="form-control" /><br>
 			<button type="submit" class="btn btn-primary">${action}</button>
 		</fieldset>
 	</form:form>
-<<<<<<< HEAD
-=======
-	
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 	<p />
 	<table class="table">
 		<thead class="thead-light">
 			<tr>
 				<th>ID</th>
-				<th>訂單名稱</th>
-				<th>價錢</th>
-				<th>備註</th>
-				<th>建立日期</th>
-				<th>修改日期</th>
-				<th></th>
+				<th>Code</th>
+				<th>Company</th>
+				<th>Name</th>
+				<th>Cost</th>
+				<th>Type</th>
+				<th>Area</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="s" items="${orders}">
+			<c:forEach var="s" items="${products}">
 				<tr scope="row">
 					<td>${s.id}</td>
+					<td>${s.code}</td>
+					<td>${s.company}</td>
 					<td>${s.name}</td>
-					<td>${s.price}</td>
-					<td>${s.remark}</td>
-					<td>${s.time_build}</td>
-					<td>${s.time_modify}</td>
+					<td>${s.cost}</td>
+					<td>${s.type}</td>
+					<td>${s.area}</td>
 					<td>
 					<button type="button" class="btn btn-outline-primary"
-						onclick="location.href='/hyberx/mvc/order/find/${s.id}'">Update</button>
+						onclick="location.href='/hyberx/mvc/product/find/${s.id}'">Update</button>
 					<button type="button" class="btn btn-outline-danger"
-						onclick="location.href='/hyberx/mvc/order/delete/${s.id}'">Delete</button>
+						onclick="location.href='/hyberx/mvc/product/delete/${s.id}'">Delete</button>
 					</td>
 				</tr>
 			</c:forEach>

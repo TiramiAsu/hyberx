@@ -23,6 +23,10 @@ import tw.com.hyberx.service.OrderService;
 @Service
 public class OrderServiceImpl implements OrderService {
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 	@Autowired
 	private OrderDAO orderDAO;
 
