@@ -11,6 +11,8 @@ package tw.com.hyberx.generic;
 
 import java.util.List;
 
+import tw.com.hyberx.utils.ResponseREST;
+
 /**
  * <pre>
  * [定義 GenericService ] 2019-12-24 16:28
@@ -26,4 +28,8 @@ public interface GenericService<T> {
 	public T find(Long id);
 	public boolean update(T bean);
 	public boolean delete(Long id);
+
+	// JSON
+	ResponseREST queryREST(Object json);
+	
 }
