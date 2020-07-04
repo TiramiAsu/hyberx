@@ -16,4 +16,5 @@ import tw.com.hyberx.model.entity.Order;
 @Repository
 public class OrderDAOImpl extends _DAOImpl<Order> implements OrderDAO {
 
+	
 }

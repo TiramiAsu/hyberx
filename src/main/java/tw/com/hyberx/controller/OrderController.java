@@ -34,6 +34,7 @@ public class OrderController {
 		orderService = (orderService == null) ? SpringUtils.getBean(OrderService.class) : orderService;
 	}
 
+	
 //	static {
 //	static List<Order> orders = new ArrayList<>();
 //		Order sd1 = new Order("訂單一", 2100,"備註","20200505","20200507");
