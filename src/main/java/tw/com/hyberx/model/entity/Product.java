@@ -1,15 +1,54 @@
 package tw.com.hyberx.model.entity;
 
-public class Product{
+import java.io.Serializable;
+import java.util.Date;
 
-		private Long id;
-		private String code;
-		private String company;
-		private String name;
-		private Integer cost;
-		private String type;
-		private String area;
-		
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "product")
+public class Product implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+//		private Long id;
+//		private String code;
+//		private String company;
+//		private String name;
+//		private Integer cost;
+//		private String type;
+//		private String area;
+		 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "code", length = 255, nullable = false)
+    private String code;
+
+    @Column(name = "company", nullable = false)
+    private String company;
+    
+
+    @Column(name = "name", nullable = false)
+    private String name;
+    
+    @Column(name = "cost", nullable = false)
+    private Integer cost;
+	
+    
+    @Column(name = "type", nullable = false)
+    private String type;
+    
+    @Column(name = "area", nullable = false)
+    private String area;
 		
 		
 		public Product() {
