@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import tw.com.hyberx.model.entity.BasicInfo;
 import tw.com.hyberx.model.entity.Student;
 import tw.com.hyberx.service.StudentService;
 
@@ -31,8 +32,7 @@ public class SpringUtils {
 	private static ApplicationContext context;
 
 	static {
-//		context = new FileSystemXmlApplicationContext("applicationContext.xml");
-		context = new ClassPathXmlApplicationContext("spring.cfg.xml");
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	}
 
 	public SpringUtils() {}
@@ -57,7 +57,7 @@ public class SpringUtils {
 			System.out.println(">>> null <<<");
 		} else {
 		    List<Student> list = studentService.query();
-		    list.add(new Student("PP", 25));
+		    list.add(new Student(new BasicInfo("Asia", 22)));
 		    list.stream().forEach(System.out::println);
 			System.out.println(">>> Success <<<");
 		}

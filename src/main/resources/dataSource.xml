@@ -11,7 +11,7 @@
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		p:location="common.properties" />
+		p:location="classpath:common.properties" />
 
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
