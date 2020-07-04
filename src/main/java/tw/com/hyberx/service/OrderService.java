@@ -14,4 +14,5 @@ import tw.com.hyberx.model.entity.Order;
 
 public interface OrderService extends GenericService<Order> {
 
+	
 }
