@@ -21,6 +21,8 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	@Transactional
 	public boolean create(Account bean) {
+		bean.setStatus(0);
+		bean.setErrorTimes(0);
 		bean.setTimeBuild(new Date());
         bean.setTimeModify(new Date());
         return accountDAO.save(bean);

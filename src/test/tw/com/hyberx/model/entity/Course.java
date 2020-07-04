@@ -28,8 +28,8 @@ import javax.persistence.Table;
  * @since   2020-06-17 23:29
  * @version
  */
-@Entity
-@Table(name = "course")
+//@Entity
+//@Table(name = "course")
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 7410098243973715791L;

@@ -1,6 +1,7 @@
 package tw.com.hyberx.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import tw.com.hyberx.model.entity.Account;
+import tw.com.hyberx.model.entity.Member;
 import tw.com.hyberx.service.AccountService;
+import tw.com.hyberx.service.MemberService;
 import tw.com.hyberx.utils.SpringUtils;
 
 @Controller
@@ -21,6 +26,9 @@ public class AccountController {
 	
 	@Autowired
 	public AccountService accountService;
+	
+	@Autowired
+	public MemberService memberService;
 	
 	public void initService() {
 		accountService=(accountService==null)
@@ -38,17 +46,35 @@ public class AccountController {
 	}
 	
 	@GetMapping("/register")
-	public String accountRegister(@ModelAttribute Account account) {
+	public String accountRegister(@ModelAttribute Account account,Model model) {
+		initService();
 		
+		model.addAttribute("account",new Account());
+		model.addAttribute("action","saveregister");
 		return "main/features/register";
+	}
+	
+	@PostMapping("/saveregister")
+	public String saveRegister(@ModelAttribute Account account) {
+		initService();
+		
+		
+		memberService.create(account.getM_id());
+		accountService.create(account);
+		return "redirect:./input";
 	}
 	
 	@GetMapping("/input")
 	public String input(Model model) {
-		initService();
+		List<Account> accounts=accountService.query();
+		System.out.println(accounts);
+		Account account=new Account();
+		Member member=new Member();
+		member.setId(1L);
+		account.setM_id(member);
 		
-		model.addAttribute("account", new Account()); // 屬性名稱為spring form 的 modelAttribute
-        model.addAttribute("students", accountService.query());
+		model.addAttribute("account",account ); // 屬性名稱為spring form 的 modelAttribute
+        model.addAttribute("accounts", accountService.query());
         model.addAttribute("action", "add");
         return "main/account";
 	}
