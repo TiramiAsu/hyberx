@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tw.com.hyberx.model.dao.MemberDAO;
 import tw.com.hyberx.model.entity.Member;
 import tw.com.hyberx.service.MemberService;
 
+@Service
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
@@ -23,27 +25,7 @@ public class MemberServiceImpl implements MemberService{
         bean.setTimeModify(new Date());
         return memberDAO.save(bean);
 	}
-
-	@Override
-	public List<Member> query() {
-		List<Member> memberList=null;
-		
-		try {
-			memberList=memberDAO.findAll()
-					.stream()
-					.sorted((o1,o2)->o2.getId().compareTo
-							(o1.getId()))
-					.collect(Collectors.toList());
-			if (memberList==null) {
-				throw new Exception(">>>Member Query Failed<<<");
-			}
-		} catch (Exception e) {
-			memberList=null;
-			e.printStackTrace();
-		}
-		return memberList;
-	}
-
+	
 	@Override
 	@Transactional
 	public Member find(Long id) {
@@ -64,8 +46,6 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDAO.remove(memberDAO.find(id));
 	}
-<<<<<<< HEAD
-=======
 
 	@Override
 	@Transactional
@@ -87,6 +67,5 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return memberList;
 	}
->>>>>>> origin/cbk
 	
 }

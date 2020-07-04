@@ -19,9 +19,9 @@ public class Member implements Serializable{
 	
 	private static final long serialVersionUID = -5608241289036967005L;
 	
+//	@OneToMany(mappedBy = "member")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@OneToMany(mappedBy = "member")
 	private Long id;
 	
 	@Column(name = "name",length = 255,nullable = false)

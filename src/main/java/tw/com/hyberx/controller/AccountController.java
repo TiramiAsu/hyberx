@@ -28,6 +28,21 @@ public class AccountController {
 						:accountService;
 	}
 	
+	
+	@PostMapping("/account_verify")
+	public String accountVerify(@ModelAttribute Account account) {
+		initService();
+		
+		
+		return "redirect:./input";
+	}
+	
+	@GetMapping("/register")
+	public String accountRegister(@ModelAttribute Account account) {
+		
+		return "main/features/register";
+	}
+	
 	@GetMapping("/input")
 	public String input(Model model) {
 		initService();
@@ -35,7 +50,7 @@ public class AccountController {
 		model.addAttribute("account", new Account()); // 屬性名稱為spring form 的 modelAttribute
         model.addAttribute("students", accountService.query());
         model.addAttribute("action", "add");
-        return "test/account";
+        return "main/account";
 	}
 	
 	@PostMapping("/add")
@@ -53,7 +68,7 @@ public class AccountController {
 		model.addAttribute("account", accountService.find(id));
         model.addAttribute("accounts", accountService.query());
         model.addAttribute("action", "update");
-        return "test/account";
+        return "main/account";
 	}
 	
 	@PostMapping("/update")
@@ -65,7 +80,7 @@ public class AccountController {
 		oriAccount.setPassword(oriAccount.getPassword().equals(account.getPassword())?account.getPassword():oriAccount.getPassword());
 		oriAccount.setM_id(oriAccount.getM_id().equals(account.getM_id())?account.getM_id():oriAccount.getM_id());
 		oriAccount.setStatus(oriAccount.getStatus().equals(account.getStatus())?account.getStatus():oriAccount.getStatus());
-		oriAccount.setError_times(oriAccount.getError_times().equals(account.getError_times())?account.getError_times():oriAccount.getError_times());
+		oriAccount.setErrorTimes(oriAccount.getErrorTimes().equals(account.getErrorTimes())?account.getErrorTimes():oriAccount.getErrorTimes());
 		oriAccount.setTimeBuild(oriAccount.getTimeBuild());
 		oriAccount.setTimeModify(new Date());
 		
