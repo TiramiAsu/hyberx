@@ -11,6 +11,7 @@ import tw.com.hyberx.model.dao.ProductDAO;
 import tw.com.hyberx.model.entity.Product;
 import tw.com.hyberx.model.entity.Student;
 import tw.com.hyberx.service.ProductService;
+import tw.com.hyberx.utils.ResponseREST;
  
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -65,6 +66,12 @@ public class ProductServiceImpl implements ProductService{
 	@Transactional
 	public boolean delete(Long id) {
 		return productDAO.remove(productDAO.find(id));
+	}
+
+	@Override
+	public ResponseREST queryREST(Object json) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -28,13 +28,9 @@ import javax.persistence.Table;
  * @since   2020-06-17 23:29
  * @version
  */
-<<<<<<< HEAD
+
 //@Entity
 //@Table(name = "course")
-=======
-@Entity
-@Table(name = "course")
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 7410098243973715791L;

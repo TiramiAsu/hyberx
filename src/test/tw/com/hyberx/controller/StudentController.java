@@ -72,7 +72,8 @@ public class StudentController {
     }
     */
 
-    @GetMapping("/search") // URL request 進來
+//    @GetMapping("/search") // URL request 進來
+    @GetMapping
     public String input(Model model) { // model 要傳給 JSP from
         
         /* list 假資料
@@ -90,11 +91,11 @@ public class StudentController {
         
         model.addAttribute("studentVo", new StudentVo()); // 屬性名稱為spring form 的 modelAttribute
         model.addAttribute("students", studentService.query());
-
+        
         // 加入 API
 //        model.addAttribute("action", "add");
         ControllerUtil.setAPI(model, _NAME, _ADD, _CANCEL, _FIND, _REMOVE);
-        return "test/student";
+        return "jsp/test/student";
     }
 
     @PostMapping("/add") // Form request 進來

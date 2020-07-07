@@ -3,8 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>HyberX</title>
+	
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
 </head>
-<body>
-	Hello, hyberxer.
+<body style="padding: 5% 20%">
+	Hello, hyberxer.<br>
+
+<fieldset>
+<legend>使用者登入</legend>
+<form action="/hyberx/mvc/accounts/account_verify" method="post">
+<input name="name" type="text" placeholder="Name" class="form-control"><br>
+<input name="password" type="password" placeholder="Password" class="form-control"><br>
+<button type="submit" class="btn btn-primary">登入</button>
+<a class="btn btn-outline-secondary" href="/hyberx/mvc/accounts/register">註冊帳號</a>
+</form>
+</fieldset>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" />
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" />
+	
 </body>
 </html>

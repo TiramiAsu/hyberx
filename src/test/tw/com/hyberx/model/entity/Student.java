@@ -121,7 +121,8 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Student [id=" + id +
-                ", basicInfo=" + basicInfo.getName() +
+//                ", basicInfo=" + basicInfo.getName() +
+        		", basicInfo=" + basicInfo +
                 ", timeBuild=" + timeBuild +
                 ", timeModify=" + timeModify +
                 "]";

@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tw.com.hyberx.model.dao.BasicInfoDAO;
 import tw.com.hyberx.model.entity.BasicInfo;
 import tw.com.hyberx.service.BasicInfoService;
+import tw.com.hyberx.utils.ResponseREST;
 
 /**
  * [titleBasicInfoServiceImpl]
@@ -86,4 +87,10 @@ public class BasicInfoServiceImpl implements BasicInfoService {
         }
         return basicInfoList;
     }
+
+	@Override
+	public ResponseREST queryREST(Object json) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

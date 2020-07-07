@@ -31,9 +31,9 @@ public class Account implements Serializable {
 	private String password;
 
 	@ManyToOne
-	@JoinColumn(name = "m_id",
-//	referencedColumnName = "id",
-	nullable = false)
+	@JoinColumn(name = "m_id"
+//	,referencedColumnName = "id"
+	)
 	private Member m_id;
 
 	@Column(name = "status", nullable = false)

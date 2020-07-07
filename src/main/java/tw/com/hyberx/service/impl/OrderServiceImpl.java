@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tw.com.hyberx.model.dao.OrderDAO;
 import tw.com.hyberx.model.entity.Order;
 import tw.com.hyberx.service.OrderService;
+import tw.com.hyberx.utils.ResponseREST;
 
 /**
  * 專案名稱： hyberx
@@ -23,10 +24,7 @@ import tw.com.hyberx.service.OrderService;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
+
 	@Autowired
 	private OrderDAO orderDAO;
 
@@ -72,6 +70,12 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional
 	public boolean delete(Long id) {
 		return orderDAO.remove(orderDAO.find(id));
+	}
+
+	@Override
+	public ResponseREST queryREST(Object json) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

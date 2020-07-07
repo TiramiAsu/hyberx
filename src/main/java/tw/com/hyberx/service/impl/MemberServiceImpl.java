@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tw.com.hyberx.model.dao.MemberDAO;
 import tw.com.hyberx.model.entity.Member;
 import tw.com.hyberx.service.MemberService;
+import tw.com.hyberx.utils.ResponseREST;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -44,7 +46,12 @@ public class MemberServiceImpl implements MemberService{
 	@Transactional
 	public boolean delete(Long id) {
 		// TODO Auto-generated method stub
-		return memberDAO.remove(memberDAO.find(id));
+		try {
+			return memberDAO.remove(memberDAO.find(id));
+		} catch (DataIntegrityViolationException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override
@@ -66,6 +73,12 @@ public class MemberServiceImpl implements MemberService{
 			e.printStackTrace();
 		}
 		return memberList;
+	}
+
+	@Override
+	public ResponseREST queryREST(Object json) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

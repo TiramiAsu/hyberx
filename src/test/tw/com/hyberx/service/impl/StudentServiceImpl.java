@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tw.com.hyberx.model.dao.StudentDAO;
 import tw.com.hyberx.model.entity.Student;
 import tw.com.hyberx.service.StudentService;
+import tw.com.hyberx.utils.ResponseREST;
 
 /**
  * [StudentServiceImpl]
@@ -86,4 +87,10 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentList;
     }
+
+	@Override
+	public ResponseREST queryREST(Object json) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

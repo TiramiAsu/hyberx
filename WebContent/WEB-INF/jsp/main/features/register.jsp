@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
-    pageEncoding="UTF-8"%>
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
@@ -19,7 +15,7 @@
 	register.jsp
 
 	<form:form modelAttribute="account" method="post"
-		action="/hyberx/mvc/account/${action}">
+		action="/hyberx/mvc/accounts/${action}">
 		<fieldset>
 			<legend>Register From</legend>
 			ID:
@@ -37,7 +33,7 @@
 			<form:input path="m_id.address" placeholder="Address"
 				class="form-control" />
 				<br> 電話:
-			<form:input path="m_id.phone" placeholder="Address"
+			<form:input path="m_id.phone" placeholder="Phone"
 				class="form-control" />
 			<br> E-Mail:
 			<form:input path="m_id.email" placeholder="E-Mail"
@@ -55,7 +51,6 @@
 =======
 </head>
 <body>
-register.jsp
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
+
 </body>
 </html>

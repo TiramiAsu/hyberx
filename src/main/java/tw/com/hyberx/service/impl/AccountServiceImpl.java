@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tw.com.hyberx.model.dao.AccountDAO;
 import tw.com.hyberx.model.entity.Account;
 import tw.com.hyberx.service.AccountService;
+import tw.com.hyberx.utils.ResponseREST;
 
 @Service
 public class AccountServiceImpl implements AccountService{
@@ -21,11 +22,8 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	@Transactional
 	public boolean create(Account bean) {
-<<<<<<< HEAD
 		bean.setStatus(0);
 		bean.setErrorTimes(0);
-=======
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 		bean.setTimeBuild(new Date());
         bean.setTimeModify(new Date());
         return accountDAO.save(bean);
@@ -71,6 +69,12 @@ public class AccountServiceImpl implements AccountService{
 	public boolean delete(Long id) {
 		// TODO Auto-generated method stub
 		return accountDAO.remove(accountDAO.find(id));
+	}
+
+	@Override
+	public ResponseREST queryREST(Object json) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

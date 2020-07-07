@@ -11,10 +11,10 @@ import tw.com.hyberx.model.entity.Account;
 @RequestMapping("/main")
 public class MainController {
 	
-	@GetMapping("*")
+	@GetMapping
 	public String login(Model model) {
-		model.addAttribute("account",new Account());
-		return "main/login";
+//		model.addAttribute("account",new Account());
+		return "forward:/index.html";
 	}
 	
 }

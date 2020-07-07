@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 	<meta charset="UTF-8">
 	<title>SpringMVC - from</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -49,7 +48,6 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-=======
   <meta charset="UTF-8">
   <title>[ TEST ] Student</title>
 
@@ -109,7 +107,5 @@
   </div>
 
   <jsp:include page="../../include/foot.jsp"></jsp:include>
-
->>>>>>> cf73a13d3d021db3bb2881604c18243c0654ff01
 </body>
 </html>

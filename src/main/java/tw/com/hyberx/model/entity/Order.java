@@ -24,10 +24,6 @@ import javax.persistence.TemporalType;
 @Table(name = "orders")
 public class Order implements Serializable {
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 9110d1d3f27cfde3bb720c39fd67ef7fa9b46be4
 	private static final long serialVersionUID = -8594710176376450721L;
 	
 	@Id
