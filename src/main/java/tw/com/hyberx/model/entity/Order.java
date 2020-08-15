@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +31,9 @@ public class Order implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@ManyToOne
+	@JoinColumn(name = "a_id")
+	private Account a_id;
 	@Column(name = "name", length = 255, nullable = false)
 	private String name;
 	@Column(name = "price", nullable = false)
@@ -44,19 +49,27 @@ public class Order implements Serializable {
 
 	public Order() {
 	}
-
-	public Order(String name, Integer price, String remark) {
+	public Order(Account a_id, String name, Integer price, String remark) {
+		super();
+		this.a_id = a_id;
 		this.name = name;
 		this.price = price;
 		this.remark = remark;
 	}
-
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Account getA_id() {
+		return a_id;
+	}
+
+	public void setA_id(Account a_id) {
+		this.a_id = a_id;
 	}
 
 	public String getName() {
@@ -87,8 +100,8 @@ public class Order implements Serializable {
 		return time_build;
 	}
 
-	public void setTime_build(Date date) {
-		this.time_build = date;
+	public void setTime_build(Date time_build) {
+		this.time_build = time_build;
 	}
 
 	public Date getTime_modify() {
@@ -101,7 +114,7 @@ public class Order implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", name=" + name + ", price=" + price + ", remark=" + remark + ", time_build="
-				+ time_build + ", time_modify=" + time_modify + "]";
+		return "Order [id=" + id + ", a_id=" + a_id + ", name=" + name + ", price=" + price + ", remark=" + remark
+				+ ", time_build=" + time_build + ", time_modify=" + time_modify + "]";
 	}
 }

@@ -55,7 +55,7 @@ public class ProductController {
         model.addAttribute("product", new Product()); // 屬性名稱為spring form 的 modelAttribute
         model.addAttribute("products", productService.query());
         model.addAttribute("action", "add");
-        return "test/product";
+        return "jsp/test/product";
 		
     }
 

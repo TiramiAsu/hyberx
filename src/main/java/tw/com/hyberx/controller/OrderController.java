@@ -56,7 +56,7 @@ public class OrderController {
 		model.addAttribute("order", new Order()); // 屬性名稱為spring form 的 modelAttribute
 		model.addAttribute("orders", orderService.query());
 		model.addAttribute("action", "add");
-		return "test/order";
+		return "jsp/test/order";
 	}
 
 	@PostMapping("/add") // Form request 進來

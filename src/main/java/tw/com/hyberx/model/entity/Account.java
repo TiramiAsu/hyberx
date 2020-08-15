@@ -2,6 +2,7 @@ package tw.com.hyberx.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,10 +52,16 @@ public class Account implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timeModify;
 	
+//	@OneToMany(mappedBy = "account")
+//	private List<Order> orders;
+	
 	public Account() {}
 
 	public Account(String name, String password, Member m_id, Integer status, Integer errorTimes, Date timeBuild,
-			Date timeModify) {
+			Date timeModify
+//			, List<Order> orders
+			) {
+		super();
 		this.name = name;
 		this.password = password;
 		this.m_id = m_id;
@@ -61,6 +69,7 @@ public class Account implements Serializable {
 		this.errorTimes = errorTimes;
 		this.timeBuild = timeBuild;
 		this.timeModify = timeModify;
+//		this.orders = orders;
 	}
 
 	public Long getId() {
@@ -127,10 +136,19 @@ public class Account implements Serializable {
 		this.timeModify = timeModify;
 	}
 
+//	public List<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<Order> orders) {
+//		this.orders = orders;
+//	}
+
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", name=" + name + ", password=" + password + ", m_id=" + m_id + ", status="
 				+ status + ", errorTimes=" + errorTimes + ", timeBuild=" + timeBuild + ", timeModify=" + timeModify
+//				+ ", orders=" + orders 
 				+ "]";
 	}
 }

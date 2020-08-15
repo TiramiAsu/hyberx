@@ -118,7 +118,7 @@ public class StudentController {
         
         basicInfoService.create(studentVo.getBasicInfo());
         studentService.create(studentVo.getStudent());
-        return "redirect:./search";
+        return "redirect:.";
     }
 
     @GetMapping("/find/{id}")
@@ -143,7 +143,7 @@ public class StudentController {
         // 加入 API
 //        model.addAttribute("action", "update");
         ControllerUtil.setAPI(model, _NAME, _MODIFY, _CANCEL, _FIND, _REMOVE);
-        return "test/student";
+        return "jsp/test/student";
     }
 
     @PostMapping("/modify")
@@ -171,7 +171,7 @@ public class StudentController {
         oriStudent.setBasicInfo(oriBasicInfo);
         
         studentService.update(oriStudent);
-        return "redirect:./search";
+        return "redirect:.";
     }
 
     @GetMapping("/remove/{id}")
@@ -193,6 +193,6 @@ public class StudentController {
         } else {
             studentService.delete(id);
         }
-        return "redirect:../search";
+        return "redirect:..";
     }
 }
