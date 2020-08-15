@@ -1,7 +1,5 @@
 package tw.com.hyberx.service.impl;
 
-<<<<<<< HEAD
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,35 +11,8 @@ import org.springframework.stereotype.Service;
 
 import tw.com.hyberx.model.dao.CompanyDAO;
 import tw.com.hyberx.model.entity.Company;
-import tw.com.hyberx.model.entity.Member;
 import tw.com.hyberx.service.CompanyService;
 import tw.com.hyberx.utils.ResponseREST;
-
-@Service
-public class CompanyServiceImpl implements CompanyService {
-
-	@Autowired
-	private CompanyDAO companyDAO;
-
-	@Override
-	@Transactional
-	public boolean create(Company bean) {
-		bean.setTimeBuild(new Date());
-		bean.setTimeModify(new Date());
-=======
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import tw.com.hyberx.model.dao.CompanyDAO;
-import tw.com.hyberx.model.dao.ProductDAO;
-import tw.com.hyberx.model.entity.Company;
-import tw.com.hyberx.model.entity.Product;
-import tw.com.hyberx.service.CompanyService;
-import tw.com.hyberx.service.ProductService;
 
 @Service
 public class CompanyServiceImpl  implements CompanyService{
@@ -53,7 +24,6 @@ public class CompanyServiceImpl  implements CompanyService{
 	@Override
 	@Transactional
 	public boolean create(Company bean) {
->>>>>>> bob
 		return companyDAO.save(bean);
 	}
 
@@ -62,19 +32,7 @@ public class CompanyServiceImpl  implements CompanyService{
 	public List<Company> query() {
 		List<Company> companyList = null;
 
-<<<<<<< HEAD
-		try {
-			companyList = companyDAO.findAll().stream().sorted((o1, o2) -> o2.getId().compareTo(o1.getId()))
-					.collect(Collectors.toList());
-			if (companyList == null) {
-				throw new Exception(">>> Member Query Failed <<<");
-			}
-		} catch (Exception e) {
-			companyList = null;
-			e.printStackTrace();
-		}
-		return companyList;
-=======
+		
         /* Initial value */
         /* Check */
         /* Search Condition */
@@ -93,7 +51,6 @@ public class CompanyServiceImpl  implements CompanyService{
             e.printStackTrace();
         }
         return companyList;
->>>>>>> bob
 	}
 
 	@Override
@@ -105,17 +62,13 @@ public class CompanyServiceImpl  implements CompanyService{
 	@Override
 	@Transactional
 	public boolean update(Company bean) {
-<<<<<<< HEAD
 		// TODO Auto-generated method stub
-=======
->>>>>>> bob
 		return companyDAO.save(bean);
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(Long id) {
-<<<<<<< HEAD
 		try {
 			return companyDAO.remove(companyDAO.find(id));
 		} catch (DataIntegrityViolationException e) {
@@ -130,10 +83,6 @@ public class CompanyServiceImpl  implements CompanyService{
 		return null;
 	}
 
-=======
-		return companyDAO.remove(companyDAO.find(id));
-	}
 
 	
->>>>>>> bob
 }

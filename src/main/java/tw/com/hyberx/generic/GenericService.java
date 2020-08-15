@@ -30,10 +30,6 @@ public interface GenericService<T> {
 	public boolean delete(Long id);
 
 	// JSON
-<<<<<<< HEAD
 	ResponseREST queryREST(Object json);
-=======
-//	ResponseREST queryREST(Object json);
->>>>>>> bob
 	
 }
