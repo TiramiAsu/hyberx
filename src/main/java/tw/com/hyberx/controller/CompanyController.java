@@ -1,9 +1,5 @@
 package tw.com.hyberx.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,19 +15,16 @@ import tw.com.hyberx.service.CompanyService;
 import tw.com.hyberx.service.ProductService;
 import tw.com.hyberx.utils.SpringUtils;
 
- 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/company")
+public class CompanyController {
+
 	
 	@Autowired
-    public ProductService productService;
-	
-	@Autowired
-	public CompanyService companyService;
+    public CompanyService companyService;
     
     public void initService() {
-        productService = (productService == null) ? SpringUtils.getBean(ProductService.class) : productService;
+    	companyService = (companyService == null) ? SpringUtils.getBean(CompanyService.class) : companyService;
     }
 	
 	
@@ -57,15 +50,15 @@ public class ProductController {
 //        return "test/product";
 		initService();
         
-        model.addAttribute("product", new Product()); // 屬性名稱為spring form 的 modelAttribute
-        model.addAttribute("products", productService.query());
+        model.addAttribute("company", new Company()); // 屬性名稱為spring form 的 modelAttribute
+        model.addAttribute("companys", companyService.query());
         model.addAttribute("action", "add");
-        return "jsp/test/product";
-		
+        return "jsp/test/company";
+		  
     }
 
-    @PostMapping("/add") // Form request 進來
-    public String add(@ModelAttribute Product product) {
+    @PostMapping("/add") // Form r進來
+    public String add(@ModelAttribute Company company) {
 //        Long id = 1L;
 //        if (products.size() != 0) {
 //            id += products.stream().mapToLong(s -> s.getId()).max().getAsLong();
@@ -75,11 +68,8 @@ public class ProductController {
 //        products.stream().forEach(System.out::println);
 //        return "redirect:./input";
     	initService();
-//    	Company company = new Company("11111","22222","33333","44444","66666");
-//    	companyService.create(company);
-//    	product.setCompany(company);
-        productService.create(product);
-//        return "redirect:.";
+        System.out.print(company);
+        companyService.create(company);
         return "redirect:.";
     }
 
@@ -92,14 +82,14 @@ public class ProductController {
 //        return "test/product";
     	initService();
         
-        model.addAttribute("product", productService.find(id));
-        model.addAttribute("products", productService.query());
+        model.addAttribute("company", companyService.find(id));
+        model.addAttribute("companys", companyService.query());
         model.addAttribute("action", "update");
-        return "jsp/test/product";
+        return "jsp/test/company";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Product product) {
+    public String update(@ModelAttribute Company company) {
 //        Product pro = products.stream().filter(s -> s.getId() == product.getId()).findFirst().get();
 //        pro.setCode(product.getCode());
 //        pro.setCompany(product.getCompany());
@@ -119,15 +109,14 @@ public class ProductController {
     	
     	
         
-        Product oriProduct = productService.find(product.getId());
-        oriProduct.setCode(oriProduct.getCode().equals(product.getCode()) ? oriProduct.getCode() : product.getCode());
-//        oriProduct.setCompany(oriProduct.getCompany().equals(product.getCompany()) ? oriProduct.getCompany()  : product.getCompany());
-        oriProduct.setName(oriProduct.getName().equals(product.getName()) ? oriProduct.getName() : product.getName() );
-        oriProduct.setCost(oriProduct.getCost().equals(product.getCost()) ? oriProduct.getCost() : product.getCost() );
-        oriProduct.setType(oriProduct.getType().equals(product.getType()) ? oriProduct.getType() : product.getType());
-        oriProduct.setArea(oriProduct.getArea().equals(product.getArea()) ? oriProduct.getArea() : product.getArea());
+        Company oriCompany = companyService.find(company.getId());
+        oriCompany.setName(oriCompany.getName().equals(company.getName()) ? oriCompany.getName() : company.getName());
+        oriCompany.setAddress(oriCompany.getAddress().equals(company.getAddress()) ? oriCompany.getAddress()  : company.getAddress());
+        oriCompany.setPhone(oriCompany.getPhone().equals(company.getPhone()) ? oriCompany.getPhone() : company.getPhone() );
+        oriCompany.setEmail(oriCompany.getEmail().equals(company.getEmail()) ? oriCompany.getEmail() : company.getEmail() );
+        oriCompany.setContact_man(oriCompany.getContact_man().equals(company.getContact_man()) ? oriCompany.getContact_man() : company.getContact_man());
         
-        productService.update(oriProduct);
+        companyService.update(oriCompany);
         return "redirect:.";
     }
 
@@ -138,16 +127,14 @@ public class ProductController {
 //        return "redirect:../input";
     	initService();
         
-        Product oriProduct = productService.find(id);
-        if (oriProduct.equals(null)) {
+        Company oriCompany = companyService.find(id);
+        if (oriCompany.equals(null)) {
             System.out.println(">>> delete failed <<<");
         } else {
-        	productService.delete(id);
+        	companyService.delete(id);
         }
         return "redirect:..";
     	
     }
-	
-	
 	
 }

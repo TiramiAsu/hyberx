@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,14 +31,19 @@ public class Product implements Serializable{
 		 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
     private Long id;
+	
+	
+	
 
     @Column(name = "code", length = 255, nullable = false)
     private String code;
 
-    @Column(name = "company", nullable = false)
-    private String company;
-    
+    @ManyToOne
+    @JoinColumn(name="company_id")
+    private Company company;
+
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -55,7 +63,7 @@ public class Product implements Serializable{
 			super();
 		}
 		
-		public Product(String code, String company, String name, Integer cost, String type, String area) {
+		public Product(String code, Company company, String name, Integer cost, String type, String area) {
 			super();
 			this.code = code;
 			this.company = company;
@@ -86,12 +94,12 @@ public class Product implements Serializable{
 		}
 
 
-		public String getCompany() {
+		public Company getCompany() {
 			return company;
 		}
 
 
-		public void setCompany(String company) {
+		public void setCompany(Company company) {
 			this.company = company;
 		}
 
@@ -137,7 +145,7 @@ public class Product implements Serializable{
 
 		@Override
 		public String toString() {
-			return "Product [id=" + id + ", code=" + code + ", company=" + company + ", name=" + name + ", cost=" + cost
+			return "Product [id=" + id + ", code=" + code +  "Company=" + company +", name=" + name + ", cost=" + cost
 					+ ", type=" + type + ", area=" + area + "]";
 		}
 		
