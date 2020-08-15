@@ -72,7 +72,7 @@ public class StudentController {
     }
     */
 
-    @GetMapping("/search") // URL request 進來
+    @GetMapping// URL request 進來
     public String input(Model model) { // model 要傳給 JSP from
         
         /* list 假資料
@@ -94,7 +94,7 @@ public class StudentController {
         // 加入 API
 //        model.addAttribute("action", "add");
         ControllerUtil.setAPI(model, _NAME, _ADD, _CANCEL, _FIND, _REMOVE);
-        return "test/student";
+        return "jsp/test/student";
     }
 
     @PostMapping("/add") // Form request 進來
@@ -117,7 +117,7 @@ public class StudentController {
         
         basicInfoService.create(studentVo.getBasicInfo());
         studentService.create(studentVo.getStudent());
-        return "redirect:./search";
+        return "redirect:.";
     }
 
     @GetMapping("/find/{id}")
@@ -142,7 +142,7 @@ public class StudentController {
         // 加入 API
 //        model.addAttribute("action", "update");
         ControllerUtil.setAPI(model, _NAME, _MODIFY, _CANCEL, _FIND, _REMOVE);
-        return "test/student";
+        return "jsp/test/student";
     }
 
     @PostMapping("/modify")
@@ -170,7 +170,7 @@ public class StudentController {
         oriStudent.setBasicInfo(oriBasicInfo);
         
         studentService.update(oriStudent);
-        return "redirect:./search";
+        return "redirect:.";
     }
 
     @GetMapping("/remove/{id}")
@@ -192,6 +192,6 @@ public class StudentController {
         } else {
             studentService.delete(id);
         }
-        return "redirect:../search";
+        return "redirect:..";
     }
 }

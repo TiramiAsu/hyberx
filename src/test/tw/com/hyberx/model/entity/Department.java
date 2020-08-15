@@ -28,8 +28,8 @@ import javax.persistence.Table;
  * @since   2020-06-17 23:41
  * @version 
  */
-@Entity
-@Table(name = "department")
+//@Entity
+//@Table(name = "department")
 public class Department implements Serializable {
 
     private static final long serialVersionUID = -4336884726183375917L;

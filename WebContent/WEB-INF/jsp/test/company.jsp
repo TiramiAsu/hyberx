@@ -5,7 +5,7 @@
 <html>
 <head> 
 <meta charset="UTF-8">
-<title>Product - from</title>
+<title>Company - from</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <jsp:include page="../../include/head.jsp"></jsp:include>
@@ -18,17 +18,16 @@
 
    <jsp:include page="../../include/menu.jsp"></jsp:include>
    <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-	<form:form modelAttribute="product" method="post"
-		action="/hyberx/mvc/product/${action}">
+	<form:form modelAttribute="company" method="post"
+		action="/hyberx/mvc/company/${action}">
 		<fieldset>
-			<legend>Product From</legend>
+			<legend>Company From</legend>
 			<form:input path="id" placeholder="default" readonly="true" class="form-control" /><br>
-			<form:input path="code" placeholder="Code" class="form-control" /><br>
-			<form:input path="company.id" placeholder="Company" class="form-control" /><br>
 			<form:input path="name" placeholder="Name" class="form-control" /><br>
-			<form:input path="cost" placeholder="Cost" class="form-control" /><br>
-			<form:input path="type" placeholder="Type" class="form-control" /><br>
-			<form:input path="area" placeholder="Area" class="form-control" /><br>
+			<form:input path="address" placeholder="Address" class="form-control" /><br>
+			<form:input path="phone" placeholder="Phone" class="form-control" /><br>
+			<form:input path="email" placeholder="Email" class="form-control" /><br>
+			<form:input path="contact_man" placeholder="Contact_man" class="form-control" /><br>
 			<button type="submit" class="btn btn-primary">${action}</button>
 		</fieldset>
 	</form:form>
@@ -37,29 +36,27 @@
 		<thead class="thead-light">
 			<tr>
 				<th>ID</th>
-				<th>Code</th>
-				<th>Company</th>
 				<th>Name</th>
-				<th>Cost</th>
-				<th>Type</th>
-				<th>Area</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Contact_man</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="s" items="${products}">
+			<c:forEach var="s" items="${companys}">
 				<tr scope="row">
 					<td>${s.id}</td>
-					<td>${s.code}</td>
-					<td>${s.company.id}</td>
 					<td>${s.name}</td>
-					<td>${s.cost}</td>
-					<td>${s.type}</td>
-					<td>${s.area}</td>
+					<td>${s.address}</td>
+					<td>${s.phone}</td>
+					<td>${s.email}</td>
+					<td>${s.contact_man}</td>
 					<td>
 					<button type="button" class="btn btn-outline-primary"
-						onclick="location.href='/hyberx/mvc/product/find/${s.id}'">Update</button>
+						onclick="location.href='/hyberx/mvc/company/find/${s.id}'">Update</button>
 					<button type="button" class="btn btn-outline-danger"
-						onclick="location.href='/hyberx/mvc/product/delete/${s.id}'">Delete</button>
+						onclick="location.href='/hyberx/mvc/company/delete/${s.id}'">Delete</button>
 					</td>
 				</tr>
 			</c:forEach>
