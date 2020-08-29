@@ -1,8 +1,11 @@
 package tw.com.hyberx.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -40,10 +45,21 @@ public class Product implements Serializable{
     @Column(name = "code", length = 255, nullable = false)
     private String code;
 
+    
+    
+    
     @ManyToOne
     @JoinColumn(name="company_id")
     private Company company;
 
+    
+    
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "product_order", joinColumns = {
+            @JoinColumn(name = "product_id",  nullable = false, updatable = false)}, 
+    inverseJoinColumns = {
+            @JoinColumn(name = "order_id", nullable = false, updatable = false)})
+    private List<Order> orders =new  ArrayList<>();
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -63,10 +79,11 @@ public class Product implements Serializable{
 			super();
 		}
 		
-		public Product(String code, Company company, String name, Integer cost, String type, String area) {
+		public Product(String code, Company company, List<Order> orders, String name, Integer cost, String type, String area) {
 			super();
 			this.code = code;
 			this.company = company;
+			this.orders = orders;
 			this.name = name;
 			this.cost = cost;
 			this.type = type;
@@ -103,6 +120,13 @@ public class Product implements Serializable{
 			this.company = company;
 		}
 
+		public List<Order> getOrders() {
+			return orders;
+		}
+
+		public void setOrders(List<Order> orders) {
+			this.orders = orders;
+		}
 
 		public String getName() {
 			return name;
@@ -145,9 +169,10 @@ public class Product implements Serializable{
 
 		@Override
 		public String toString() {
-			return "Product [id=" + id + ", code=" + code +  "Company=" + company +", name=" + name + ", cost=" + cost
-					+ ", type=" + type + ", area=" + area + "]";
+			return "Product [id=" + id + ", code=" + code + ", company=" + company + ", orders=" + orders + ", name="
+					+ name + ", cost=" + cost + ", type=" + type + ", area=" + area + "]";
 		}
+
 		
 		
 		

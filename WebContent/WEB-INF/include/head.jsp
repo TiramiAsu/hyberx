@@ -9,9 +9,14 @@
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css" rel="stylesheet">
 	<!-- axios -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table-locale-all.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
 	<style>
 		.bd-placeholder-img {

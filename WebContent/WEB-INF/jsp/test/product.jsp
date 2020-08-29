@@ -39,6 +39,7 @@
 				<th>ID</th>
 				<th>Code</th>
 				<th>Company</th>
+				<th>Order</th>
 				<th>Name</th>
 				<th>Cost</th>
 				<th>Type</th>
@@ -51,6 +52,10 @@
 					<td>${s.id}</td>
 					<td>${s.code}</td>
 					<td>${s.company.id}</td>
+					 <c:set value="${s.orders }" var="subItem"/>
+					      <c:forEach items="${subItem }" var="var">
+					      ${var.name }<br />
+					      </c:forEach>
 					<td>${s.name}</td>
 					<td>${s.cost}</td>
 					<td>${s.type}</td>
@@ -63,6 +68,7 @@
 					</td>
 				</tr>
 			</c:forEach>
+			
 		</tbody>
 	</table>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" />

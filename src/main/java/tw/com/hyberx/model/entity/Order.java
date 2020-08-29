@@ -1,14 +1,19 @@
 package tw.com.hyberx.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +39,11 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "a_id")
 	private Account a_id;
+	
+	@ManyToMany(mappedBy = "orders")
+	 private List<Product> products =new ArrayList<>();
+	
+	
 	@Column(name = "name", length = 255, nullable = false)
 	private String name;
 	@Column(name = "price", nullable = false)
@@ -49,9 +59,10 @@ public class Order implements Serializable {
 
 	public Order() {
 	}
-	public Order(Account a_id, String name, Integer price, String remark) {
+	public Order(Account a_id, List<Product> products, String name, Integer price, String remark) {
 		super();
 		this.a_id = a_id;
+		this.products = products;
 		this.name = name;
 		this.price = price;
 		this.remark = remark;
@@ -72,6 +83,13 @@ public class Order implements Serializable {
 		this.a_id = a_id;
 	}
 
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 	public String getName() {
 		return name;
 	}
@@ -111,10 +129,11 @@ public class Order implements Serializable {
 	public void setTime_modify(Date time_modify) {
 		this.time_modify = time_modify;
 	}
-
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", a_id=" + a_id + ", name=" + name + ", price=" + price + ", remark=" + remark
-				+ ", time_build=" + time_build + ", time_modify=" + time_modify + "]";
+		return "Order [id=" + id + ", a_id=" + a_id + ", products=" + products + ", name=" + name + ", price=" + price
+				+ ", remark=" + remark + ", time_build=" + time_build + ", time_modify=" + time_modify + "]";
 	}
+	
+	
 }

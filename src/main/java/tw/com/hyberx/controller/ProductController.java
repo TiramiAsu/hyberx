@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.jdt.internal.compiler.env.IModule.IPackageExport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import tw.com.hyberx.model.entity.Company;
+import tw.com.hyberx.model.entity.Order;
 import tw.com.hyberx.model.entity.Product;
 import tw.com.hyberx.service.CompanyService;
+import tw.com.hyberx.service.OrderService;
 import tw.com.hyberx.service.ProductService;
 import tw.com.hyberx.utils.SpringUtils;
 
@@ -29,7 +32,13 @@ public class ProductController {
 	
 	@Autowired
 	public CompanyService companyService;
-    
+	
+	
+	@Autowired
+	public OrderService orderService;
+	
+	
+	
     public void initService() {
         productService = (productService == null) ? SpringUtils.getBean(ProductService.class) : productService;
     }
@@ -56,7 +65,10 @@ public class ProductController {
 //        model.addAttribute("action", "add");
 //        return "test/product";
 		initService();
-        
+		List<Order> op = orderService.query();
+		List<Product> lp = productService.query();
+		
+		
         model.addAttribute("product", new Product()); // 屬性名稱為spring form 的 modelAttribute
         model.addAttribute("products", productService.query());
         model.addAttribute("action", "add");

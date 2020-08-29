@@ -69,6 +69,67 @@
 			</div>
 		</div>
 	</div>
+	<div id = "table"/> 
+	
+	<script>
+	$( document ).ready(function() {
+	    console.log( "ready!" );
+	    initTable()
+	});
+	
+	  function initTable() {
+    $('#table').bootstrapTable('destroy').bootstrapTable({
+	      	data: [
+	      		{
+	      			state: 'd',
+	      			id: '1',
+	      			name: 'bob',
+	      			price: 44,
+	      			operate: 's'
+	      		}],
+	      		data: [
+		      		{
+		      			state: 'd',
+		      			id: '2',
+		      			name: 'bob2',
+		      			price: 70,
+		      			operate: 'uuuu'
+		      		}],
+	      		columns:[
+		        {
+		          field: 'state',
+		          checkbox: true,
+		          align: 'center',
+		          valign: 'middle'
+		        }, {
+		          title: 'Item ID',
+		          field: 'id',
+		          align: 'center',
+		          valign: 'middle',
+		          sortable: true
+		        },
+		        {
+		          field: 'name',
+		          title: 'Item Name',
+		          sortable: true,
+		          align: 'center'
+		        }, {
+		          field: 'price',
+		          title: 'Item Price',
+		          sortable: true,
+		          align: 'center'
+		        }, {
+		          field: 'operate',
+		          title: 'Item Operate',
+		          align: 'center',
+		          clickToSelect: false
+		        }
+		      ]
+		    })
+														
+		  }						
+	</script>
+	
 	<jsp:include page="/WEB-INF/include/foot.jsp"></jsp:include>
 </body>
 </html>
