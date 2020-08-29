@@ -52,27 +52,28 @@ public class AccountController {
 	public String accountVerify(@ModelAttribute Account account, Model model) {
 		initService();
 
-		List<Account> accounts = accountService.query();
-		List<Account> list = accounts.stream().filter(a -> a.getName().equals(account.getName()))
-				.collect(Collectors.toList());
-		for (Account bean : list) {
-			if (bean.getStatus().equals(1)) {
-				return "jsp/main/features/loginerror";
-			} else if (bean.getErrorTimes() > 2) {
-				if (bean.getStatus() != -1)
-					bean.setStatus(-1);
-				return "jsp/main/features/loginerror";
-			} else if (bean.getPassword().equals(account.getPassword())) {
-				if (bean.getErrorTimes() != 0)bean.setErrorTimes(0);
-				bean.setStatus(1);
-				model.addAttribute("loginuserprofile", bean);
-				return "redirect:../index";
-			} else {
-				bean.setErrorTimes(bean.getErrorTimes() + 1);
-				return "jsp/main/features/loginerror";
-			}
-		}
-		return "jsp/main/features/loginerror";
+//		List<Account> accounts = accountService.query();
+//		List<Account> list = accounts.stream().filter(a -> a.getName().equals(account.getName()))
+//				.collect(Collectors.toList());
+//		for (Account bean : list) {
+//			if (bean.getStatus().equals(1)) {
+//				return "jsp/main/features/loginerror";
+//			} else if (bean.getErrorTimes() > 2) {
+//				if (bean.getStatus() != -1)
+//					bean.setStatus(-1);
+//				return "jsp/main/features/loginerror";
+//			} else if (bean.getPassword().equals(account.getPassword())) {
+//				if (bean.getErrorTimes() != 0)bean.setErrorTimes(0);
+//				bean.setStatus(1);
+//				model.addAttribute("loginuserprofile", bean);
+//				return "redirect:../index";
+//			} else {
+//				bean.setErrorTimes(bean.getErrorTimes() + 1);
+//				return "jsp/main/features/loginerror";
+//			}
+//		}
+//		return "jsp/main/features/loginerror";
+		return "redirect:../index";
 	}
 
 	@GetMapping("/register")

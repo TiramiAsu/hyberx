@@ -40,7 +40,11 @@ public class Product implements Serializable{
     private Long id;
 	
 	
-	
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "product_order", joinColumns = {
+            @JoinColumn(name = "product_id", referencedColumnName = "ID")}, inverseJoinColumns = {
+            @JoinColumn(name = "order_id", referencedColumnName = "ID")})
+    private List<Order> orders;
 
     @Column(name = "code", length = 255, nullable = false)
     private String code;
