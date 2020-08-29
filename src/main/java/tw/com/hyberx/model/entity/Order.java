@@ -36,14 +36,13 @@ public class Order implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToMany(mappedBy = "orders",fetch = FetchType.EAGER)
-	private List<Product> products;
+	
 	@ManyToOne
 	@JoinColumn(name = "a_id")
 	private Account a_id;
 	
 	@ManyToMany(mappedBy = "orders")
-	 private List<Product> products =new ArrayList<>();
+	 private List<Product> products = new ArrayList<>();
 	
 	
 	@Column(name = "name", length = 255, nullable = false)
