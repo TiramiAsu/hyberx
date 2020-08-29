@@ -44,7 +44,7 @@ public class OrderController {
 //		orders.add(sd2);
 //	}
 
-	@GetMapping("/input") // URL request 進來
+	@GetMapping // URL request 進來
 	public String input(Model model) { // model 要傳給 JSP from
 //		Order order = new Order();
 //		model.addAttribute("order", order); // 屬性名稱為spring form 的 modelAttribute
@@ -71,7 +71,7 @@ public class OrderController {
 //		return "redirect:./input";
 		initService();
 		orderService.create(order);
-		return "redirect:./input";
+		return "redirect:.";
 	}
 
 	@GetMapping("/find/{id}")
@@ -107,7 +107,7 @@ public class OrderController {
 		oriOrder.setTime_build(oriOrder.getTime_build());
 		oriOrder.setTime_modify(new Date());
 		orderService.update(oriOrder);
-		return "redirect:./input";
+		return "redirect:.";
 	}
 
 	@GetMapping("/delete/{id}")
@@ -123,7 +123,7 @@ public class OrderController {
 		} else {
 			orderService.delete(id);
 		}
-		return "redirect:../input";
+		return "redirect:..";
 	}
 	
 }
