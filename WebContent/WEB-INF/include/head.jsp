@@ -10,9 +10,12 @@
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css" rel="stylesheet">
-	<!-- axios -->
+	
+	<%-- axios --%>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
+	<%-- Bootstrap Table --%>
 	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table-locale-all.min.js"></script>
@@ -34,8 +37,10 @@
 			}
 		}
 	</style>
-	<!-- Custom styles for this template -->
+	
+	<%-- Custom styles for this template --%>
 	<link href="../css/dashboard.css" rel="stylesheet">
+	
 	<!--
   	<style type="text/css">/* Chart.js */
 		@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}

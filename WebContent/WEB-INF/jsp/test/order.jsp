@@ -12,11 +12,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/include/nav.jsp"></jsp:include>
+
 	<div class="container-fluid">
 		<div class="row">
 			<jsp:include page="/WEB-INF/include/menu.jsp"></jsp:include>
 			<!-- Main -->
 			<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+				<button onclick="take()">Get Data</button>
 				<form:form modelAttribute="order" method="post"
 					action="/hyberx/mvc/order/${action}">
 					<fieldset>
@@ -66,70 +68,145 @@
 						</c:forEach>
 					</tbody>
 				</table>
+
+				<div id="table"></div>
+
 			</div>
 		</div>
 	</div>
-	<div id = "table"/> 
-	
+
 	<script>
-	$( document ).ready(function() {
-	    console.log( "ready!" );
-	    initTable()
-	});
-	
-	  function initTable() {
-    $('#table').bootstrapTable('destroy').bootstrapTable({
-	      	data: [
-	      		{
-	      			state: 'd',
-	      			id: '1',
-	      			name: 'bob',
-	      			price: 44,
-	      			operate: 's'
-	      		}],
-	      		data: [
-		      		{
-		      			state: 'd',
-		      			id: '2',
-		      			name: 'bob2',
-		      			price: 70,
-		      			operate: 'uuuu'
-		      		}],
-	      		columns:[
-		        {
-		          field: 'state',
-		          checkbox: true,
-		          align: 'center',
-		          valign: 'middle'
-		        }, {
-		          title: 'Item ID',
-		          field: 'id',
-		          align: 'center',
-		          valign: 'middle',
-		          sortable: true
-		        },
-		        {
-		          field: 'name',
-		          title: 'Item Name',
-		          sortable: true,
-		          align: 'center'
-		        }, {
-		          field: 'price',
-		          title: 'Item Price',
-		          sortable: true,
-		          align: 'center'
-		        }, {
-		          field: 'operate',
-		          title: 'Item Operate',
-		          align: 'center',
-		          clickToSelect: false
-		        }
-		      ]
-		    })
-														
-		  }						
+		$(document).ready( function() {
+			console.log( "ready!" )
+			initTable()
+		})
+
+		function take() {
+			// var getData = $('#table').bootstrapTable('getData')
+			var getData = $('#table').bootstrapTable('getSelections')
+			console.log(getData)
+		}
+
+		function initTable() {
+
+			var datas = [
+				{
+					id: '1',
+					name: 'bob',
+					price: 44,
+					operate: 's'
+				},
+				{
+					id: '2',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '3',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '4',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '5',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '6',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '7',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '8',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '9',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '10',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				},
+				{
+					id: '11',
+					name: 'bob2',
+					price: 70,
+					operate: 'uuuu'
+				}
+			]
+
+			var columns = [
+				{
+					field: 'state',
+					checkbox: true,
+					align: 'center',
+					valign: 'middle'
+				},
+				{
+					field: 'id',
+					title: 'Item ID',
+					align: 'center',
+					valign: 'middle',
+					sortable: true
+				},
+				{
+					field: 'name',
+					title: 'Item Name',
+					align: 'center',
+					sortable: true
+				},
+				{
+					field: 'price',
+					title: 'Item Price',
+					align: 'center',
+					sortable: true
+				},
+				{
+					field: 'operate',
+					title: 'Item Operate',
+					align: 'center',
+					clickToSelect: false
+				}
+			]
+
+			$('#table').bootstrapTable('destroy').bootstrapTable({
+				// exportDataType: 'all', // basic', 'all', 'selected'
+				// exportTypes: ['csv', 'excel', 'xml', 'pdf'], // 導出類型
+				pagination: true, // 是否顯示分頁
+				// showExport: true, // 是否顯示導出按鈕 ，此為下載按鈕
+				// showToggle: true, // 是否顯示導出按鈕 ，此為欄位選取
+				showColumns: true, // 是否顯示所有的列
+				clickToSelect: true, // 點選一筆資料任意欄位會勾選資料
+				data: datas,
+				columns: columns
+			})
+
+		}
 	</script>
-	
+
 	<jsp:include page="/WEB-INF/include/foot.jsp"></jsp:include>
 </body>
 </html>
